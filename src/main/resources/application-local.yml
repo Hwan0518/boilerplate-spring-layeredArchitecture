@@ -1,0 +1,75 @@
+server:
+  port: 65535
+
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  # 스케쥴러 설정
+#  scheduler:
+#    create_monthly_settle_data_launcher:
+#      #         cron: "0 0 2 2 * *"
+#      cron: "0 7 18 * * *"
+#      zone: "Asia/Seoul"
+#    daily_settlement_job_launcher:
+#      cron: "30 30 19 * * *"
+#      zone: "Asia/Seoul"
+
+  # 스프링배치 설정
+#  batch:
+#    jdbc:
+#      initialize-schema: always
+#    job:
+#      enabled: false
+
+  # 카프카 접속정보 설정
+#  kafka:
+#    bootstrap-servers: localhost:9092
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      format_sql: true
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MariaDB106Dialect
+
+  # DB설정
+  # Replication 설정 -> hikari와 jdbc-url을 사용하면 된다!
+  datasource:
+    url: jdbc:mariadb://localhost:3307/yourschema
+    username: name
+    password: pw
+    driver-class-name: org.mariadb.jdbc.Driver
+
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/
+#
+#  # port 랜덤설정
+#  instance:
+#    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+
+#  datasource:
+#    master:
+#      hikari:
+#        jdbc-url: jdbc:mysql://localhost:3306/settlement
+#        read-only: false
+#        username: root
+#        password: 1234
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+#    slave:
+#      hikari:
+#        jdbc-url: jdbc:mysql://localhost:3306/settlement
+#        read-only: true
+#        username: root
+#        password: 1234
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+
